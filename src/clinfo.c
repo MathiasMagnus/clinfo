@@ -647,7 +647,7 @@ gatherPlatformInfo(struct platform_list *plist, cl_uint p, const struct opt_out 
 		switch (traits->param) {
 		case CL_PLATFORM_NAME:
 			/* Store name for future reference */
-			len = strlen(ret.str.buf);
+			len = (cl_int)strlen(ret.str.buf);
 			ALLOC(pdata->pname, len+1, "platform name copy");
 			/* memcpy instead of strncpy since we already have the len
 			 * and memcpy is possibly more optimized */
@@ -665,7 +665,7 @@ gatherPlatformInfo(struct platform_list *plist, cl_uint p, const struct opt_out 
 			break;
 		case CL_PLATFORM_ICD_SUFFIX_KHR:
 			/* Store ICD suffix for future reference */
-			len = strlen(ret.str.buf);
+			len = (cl_int)strlen(ret.str.buf);
 			ALLOC(pdata->sname, len+1, "platform ICD suffix copy");
 			/* memcpy instead of strncpy since we already have the len
 			 * and memcpy is possibly more optimized */
@@ -1287,8 +1287,8 @@ device_info_img_sz_2d(struct device_info_ret *ret,
 			strbuf_printf(&ret->str, "%" PRIuS "x%" PRIuS, width, height);
 		}
 	}
-	ret->value.u32v.s[0] = width;
-	ret->value.u32v.s[1] = height;
+	ret->value.u32v.s[0] = (cl_int)width;
+	ret->value.u32v.s[1] = (cl_int)height;
 }
 
 void
@@ -1306,8 +1306,8 @@ device_info_img_sz_intel_planar_yuv(struct device_info_ret *ret,
 			strbuf_printf(&ret->str, "%" PRIuS "x%" PRIuS, width, height);
 		}
 	}
-	ret->value.u32v.s[0] = width;
-	ret->value.u32v.s[1] = height;
+	ret->value.u32v.s[0] = (cl_int)width;
+	ret->value.u32v.s[1] = (cl_int)height;
 }
 
 
@@ -1331,9 +1331,9 @@ device_info_img_sz_3d(struct device_info_ret *ret,
 			}
 		}
 	}
-	ret->value.u32v.s[0] = width;
-	ret->value.u32v.s[1] = height;
-	ret->value.u32v.s[2] = depth;
+	ret->value.u32v.s[0] = (cl_int)width;
+	ret->value.u32v.s[1] = (cl_int)height;
+	ret->value.u32v.s[2] = (cl_int)depth;
 }
 
 

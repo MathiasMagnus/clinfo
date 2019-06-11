@@ -1,3 +1,11 @@
 clinfo
 .*.swp
 *.o
+
+# Visual Studio
+.vs/
+CMakeSettings.json
+
+# Visual Studio Code
+.vscode/
+build/
